@@ -75,28 +75,46 @@ export default async function RootLayout({
           }}
         />
 
-        {/* Adsterra 横幅广告配置 */}
+        {/* Adsterra 横幅广告配置和加载 */}
         <Script
-          id="adsterra-config"
-          strategy="beforeInteractive"
+          id="adsterra-banner-loader"
+          strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: `
-              var atOptions = {
-                key: '332cf9d258e9f9b3875eba9a33f958d0',
-                format: 'iframe',
-                height: 60,
-                width: 468,
-                params: {},
-                container: document.getElementById('adsterra-banner')
-              };
+              (function() {
+                // 等待DOM加载完成
+                function loadAdsterraBanner() {
+                  var container = document.getElementById('adsterra-banner');
+                  if (!container) {
+                    setTimeout(loadAdsterraBanner, 100);
+                    return;
+                  }
+                  
+                  // 创建广告配置
+                  var atOptions = {
+                    key: '332cf9d258e9f9b3875eba9a33f958d0',
+                    format: 'iframe',
+                    height: 60,
+                    width: 468,
+                    params: {}
+                  };
+                  
+                  // 创建广告脚本
+                  var script = document.createElement('script');
+                  script.src = 'https://www.highperformanceformat.com/332cf9d258e9f9b3875eba9a33f958d0/invoke.js';
+                  script.async = true;
+                  container.appendChild(script);
+                }
+                
+                // 页面加载后执行
+                if (document.readyState === 'loading') {
+                  document.addEventListener('DOMContentLoaded', loadAdsterraBanner);
+                } else {
+                  loadAdsterraBanner();
+                }
+              })();
             `,
           }}
-        />
-
-        {/* Adsterra 广告加载 */}
-        <Script
-          src="https://www.highperformanceformat.com/332cf9d258e9f9b3875eba9a33f958d0/invoke.js"
-          strategy="afterInteractive"
         />
 
         <ThemeProvider
@@ -106,12 +124,6 @@ export default async function RootLayout({
           disableTransitionOnChange
         >
           <SiteProvider siteName={siteName} announcement={announcement}>
-            {/* Adsterra 横幅广告容器 */}
-            <div 
-              id="adsterra-banner" 
-              className="w-full flex justify-center py-4 min-h-[60px]"
-              style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
-            />
             {children}
           </SiteProvider>
         </ThemeProvider>
