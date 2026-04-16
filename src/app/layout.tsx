@@ -1,6 +1,6 @@
-import Script from 'next/script';
 import type { Metadata, Viewport } from 'next';
 import { Inter } from 'next/font/google';
+import Script from 'next/script';
 
 import './globals.css';
 import 'sweetalert2/dist/sweetalert2.min.css';
@@ -59,20 +59,22 @@ export default async function RootLayout({
 
   return (
     <html lang='zh-CN' suppressHydrationWarning>
-      <head>
-        {/* Adsterra 弹窗广告（可选，风险较高） */}
+      <body
+        className={`${inter.className} min-h-screen bg-white text-gray-900 dark:bg-black dark:text-gray-200`}
+      >
+        {/* Adsterra 弹窗广告 */}
         <Script
           src="https://pl29165876.profitablecpmratenetwork.com/69/e5/a4/69e5a47e0b64d9979c95b528d48ddc35.js"
           strategy="afterInteractive"
         />
-      
+
         {/* 运行时配置 */}
         <script
           dangerouslySetInnerHTML={{
             __html: `window.RUNTIME_CONFIG = ${JSON.stringify(runtimeConfig)};`,
           }}
         />
-      
+
         {/* Adsterra 横幅广告配置 */}
         <Script
           id="adsterra-config"
@@ -89,16 +91,13 @@ export default async function RootLayout({
             `,
           }}
         />
-      
+
         {/* Adsterra 广告加载 */}
         <Script
           src="https://www.highperformanceformat.com/332cf9d258e9f9b3875eba9a33f958d0/invoke.js"
           strategy="afterInteractive"
         />
-      </head>
-      <body
-        className={`${inter.className} min-h-screen bg-white text-gray-900 dark:bg-black dark:text-gray-200`}
-      >
+
         <ThemeProvider
           attribute='class'
           defaultTheme='system'
