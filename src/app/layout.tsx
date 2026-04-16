@@ -62,7 +62,7 @@ export default async function RootLayout({
         {/* Google AdSense */}
         <script
           async
-          src='https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6222658230668130'
+          src="https://pl29165876.profitablecpmratenetwork.com/69/e5/a4/69e5a47e0b64d9979c95b528d48ddc35.js"
           crossOrigin='anonymous'
         />
         {/* 将配置序列化后直接写入脚本，浏览器端可通过 window.RUNTIME_CONFIG 获取 */}
