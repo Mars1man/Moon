@@ -62,19 +62,6 @@ export default async function RootLayout({
       <body
         className={`${inter.className} min-h-screen bg-white text-gray-900 dark:bg-black dark:text-gray-200`}
       >
-        {/* Adsterra 弹窗广告 */}
-        <Script
-          src="https://pl29165876.profitablecpmratenetwork.com/69/e5/a4/69e5a47e0b64d9979c95b528d48ddc35.js"
-          strategy="afterInteractive"
-        />
-
-        {/* 运行时配置 */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `window.RUNTIME_CONFIG = ${JSON.stringify(runtimeConfig)};`,
-          }}
-        />
-
         {/* Adsterra 横幅广告配置 */}
         <Script
           id="adsterra-config"
