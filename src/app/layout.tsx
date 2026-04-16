@@ -86,7 +86,8 @@ export default async function RootLayout({
                 format: 'iframe',
                 height: 60,
                 width: 468,
-                params: {}
+                params: {},
+                container: document.getElementById('adsterra-banner')
               };
             `,
           }}
@@ -105,6 +106,12 @@ export default async function RootLayout({
           disableTransitionOnChange
         >
           <SiteProvider siteName={siteName} announcement={announcement}>
+            {/* Adsterra 横幅广告容器 */}
+            <div 
+              id="adsterra-banner" 
+              className="w-full flex justify-center py-4 min-h-[60px]"
+              style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
+            />
             {children}
           </SiteProvider>
         </ThemeProvider>
