@@ -80,7 +80,7 @@ export default async function RootLayout({
           dangerouslySetInnerHTML={{
             __html: `
               var atOptions = {
-                key: '4cd04c774d6f328df9bb93f9b1f89cba',
+                key: '332cf9d258e9f9b3875eba9a33f958d0',
                 format: 'iframe',
                 height: 60,
                 width: 468,
@@ -92,19 +92,9 @@ export default async function RootLayout({
       
         {/* Adsterra 广告加载 */}
         <Script
-          src="https://www.highperformanceformat.com/4cd04c774d6f328df9bb93f9b1f89cba/invoke.js"
+          src="https://www.highperformanceformat.com/332cf9d258e9f9b3875eba9a33f958d0/invoke.js"
           strategy="afterInteractive"
         />
-        <script>
-          atOptions = {
-            'key' : '332cf9d258e9f9b3875eba9a33f958d0',
-            'format' : 'iframe',
-            'height' : 60,
-            'width' : 468,
-            'params' : {}
-          };
-        </script>
-        <script src="https://www.highperformanceformat.com/332cf9d258e9f9b3875eba9a33f958d0/invoke.js"></script>
       </head>
       <body
         className={`${inter.className} min-h-screen bg-white text-gray-900 dark:bg-black dark:text-gray-200`}
