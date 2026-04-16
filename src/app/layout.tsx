@@ -1,3 +1,4 @@
+import Script from 'next/script';
 import type { Metadata, Viewport } from 'next';
 import { Inter } from 'next/font/google';
 
@@ -59,29 +60,41 @@ export default async function RootLayout({
   return (
     <html lang='zh-CN' suppressHydrationWarning>
       <head>
-        {/* Google AdSense */}
-        <script
-          async
+        {/* Adsterra 弹窗广告（可选，风险较高） */}
+        <Script
           src="https://pl29165876.profitablecpmratenetwork.com/69/e5/a4/69e5a47e0b64d9979c95b528d48ddc35.js"
-          crossOrigin='anonymous'
+          strategy="afterInteractive"
         />
-        {/* 将配置序列化后直接写入脚本，浏览器端可通过 window.RUNTIME_CONFIG 获取 */}
-        {/* eslint-disable-next-line @next/next/no-sync-scripts */}
+      
+        {/* 运行时配置 */}
         <script
           dangerouslySetInnerHTML={{
             __html: `window.RUNTIME_CONFIG = ${JSON.stringify(runtimeConfig)};`,
           }}
         />
-        <script>
-          atOptions = {
-          'key' : '4cd04c774d6f328df9bb93f9b1f89cba',
-          'format' : 'iframe',
-          'height' : 60,
-          'width' : 468,
-          'params' : {}
-          };
-        </script>
-        <script src="https://www.highperformanceformat.com/4cd04c774d6f328df9bb93f9b1f89cba/invoke.js"></script>
+      
+        {/* Adsterra 横幅广告配置 */}
+        <Script
+          id="adsterra-config"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              var atOptions = {
+                key: '4cd04c774d6f328df9bb93f9b1f89cba',
+                format: 'iframe',
+                height: 60,
+                width: 468,
+                params: {}
+              };
+            `,
+          }}
+        />
+      
+        {/* Adsterra 广告加载 */}
+        <Script
+          src="https://www.highperformanceformat.com/4cd04c774d6f328df9bb93f9b1f89cba/invoke.js"
+          strategy="afterInteractive"
+        />
       </head>
       <body
         className={`${inter.className} min-h-screen bg-white text-gray-900 dark:bg-black dark:text-gray-200`}
