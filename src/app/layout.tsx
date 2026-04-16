@@ -62,60 +62,28 @@ export default async function RootLayout({
       <body
         className={`${inter.className} min-h-screen bg-white text-gray-900 dark:bg-black dark:text-gray-200`}
       >
-
-        {/* Adsterra 横幅广告配置和加载 */}
+        
+        {/* Adsterra 横幅广告配置 */}
         <Script
-          id="adsterra-banner-loader"
-          strategy="afterInteractive"
+          id="adsterra-config"
+          strategy="beforeInteractive"
           dangerouslySetInnerHTML={{
             __html: `
-              (function() {
-                console.log('[Adsterra] 开始加载横幅广告');
-                
-                function loadBanner() {
-                  var container = document.getElementById('adsterra-banner-container');
-                  if (!container) {
-                    console.log('[Adsterra] 容器未找到，重试中...');
-                    setTimeout(loadBanner, 200);
-                    return;
-                  }
-                  
-                  console.log('[Adsterra] 容器找到，开始加载广告');
-                  
-                  // 设置广告配置
-                  var atOptions = {
-                    key: '332cf9d258e9f9b3875eba9a33f958d0',
-                    format: 'iframe',
-                    height: 60,
-                    width: 468,
-                    params: {}
-                  };
-                  
-                  console.log('[Adsterra] 配置完成:', atOptions);
-                  
-                  // 创建并加载广告脚本
-                  var script = document.createElement('script');
-                  script.src = 'https://www.highperformanceformat.com/332cf9d258e9f9b3875eba9a33f958d0/invoke.js';
-                  script.async = true;
-                  script.onload = function() {
-                    console.log('[Adsterra] 广告脚本加载完成');
-                  };
-                  script.onerror = function() {
-                    console.error('[Adsterra] 广告脚本加载失败');
-                  };
-                  
-                  container.appendChild(script);
-                }
-                
-                // 等待DOM加载完成
-                if (document.readyState === 'loading') {
-                  document.addEventListener('DOMContentLoaded', loadBanner);
-                } else {
-                  loadBanner();
-                }
-              })();
+              var atOptions = {
+                key: '332cf9d258e9f9b3875eba9a33f958d0',
+                format: 'iframe',
+                height: 60,
+                width: 468,
+                params: {}
+              };
             `,
           }}
+        />
+
+        {/* Adsterra 横幅广告加载 */}
+        <Script
+          src="https://www.highperformanceformat.com/332cf9d258e9f9b3875eba9a33f958d0/invoke.js"
+          strategy="afterInteractive"
         />
 
         <ThemeProvider
@@ -125,12 +93,6 @@ export default async function RootLayout({
           disableTransitionOnChange
         >
           <SiteProvider siteName={siteName} announcement={announcement}>
-            {/* Adsterra 横幅广告容器 */}
-            <div 
-              id="adsterra-banner-container" 
-              className="w-full flex justify-center py-2"
-              style={{ minHeight: '60px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}
-            />
             {children}
           </SiteProvider>
         </ThemeProvider>
