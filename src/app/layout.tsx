@@ -69,7 +69,7 @@ export default async function RootLayout({
           strategy="beforeInteractive"
           dangerouslySetInnerHTML={{
             __html: `
-              var atOptions = {
+              var atOptions1 = {
                 key: '332cf9d258e9f9b3875eba9a33f958d0',
                 format: 'iframe',
                 height: 60,
@@ -92,7 +92,7 @@ export default async function RootLayout({
           strategy="beforeInteractive"
           dangerouslySetInnerHTML={{
             __html: `
-              var atOptions = {
+              var atOptions2 = {
                 key: '0386521f7ec0c67961bbfd814aa472cd',
                 format: 'iframe',
                 height: 90,
