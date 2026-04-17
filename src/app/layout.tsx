@@ -69,21 +69,34 @@ export default async function RootLayout({
           strategy="beforeInteractive"
           dangerouslySetInnerHTML={{
             __html: `
-              var atOptions1 = {
-                key: '332cf9d258e9f9b3875eba9a33f958d0',
-                format: 'iframe',
-                height: 60,
-                width: 468,
-                params: {}
-              };
+              (function() {
+                var atOptions = {
+                  key: '332cf9d258e9f9b3875eba9a33f958d0',
+                  format: 'iframe',
+                  height: 60,
+                  width: 468,
+                  params: {}
+                };
+                window.atOptions1 = atOptions;
+              })();
             `,
           }}
         />
 
         {/* Adsterra 横幅广告加载 */}
         <Script
-          src="https://www.highperformanceformat.com/332cf9d258e9f9b3875eba9a33f958d0/invoke.js"
+          id="adsterra-invoke-1"
           strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                var atOptions = window.atOptions1;
+                var script = document.createElement('script');
+                script.src = 'https://www.highperformanceformat.com/332cf9d258e9f9b3875eba9a33f958d0/invoke.js';
+                document.body.appendChild(script);
+              })();
+            `,
+          }}
         />
 
         {/* Adsterra 第二个广告配置 */}
@@ -92,21 +105,34 @@ export default async function RootLayout({
           strategy="beforeInteractive"
           dangerouslySetInnerHTML={{
             __html: `
-              var atOptions2 = {
-                key: '0386521f7ec0c67961bbfd814aa472cd',
-                format: 'iframe',
-                height: 90,
-                width: 728,
-                params: {}
-              };
+              (function() {
+                var atOptions = {
+                  key: '0386521f7ec0c67961bbfd814aa472cd',
+                  format: 'iframe',
+                  height: 90,
+                  width: 728,
+                  params: {}
+                };
+                window.atOptions2 = atOptions;
+              })();
             `,
           }}
         />
 
         {/* Adsterra 第二个广告加载 */}
         <Script
-          src="https://molecularshindy.com/0386521f7ec0c67961bbfd814aa472cd/invoke.js"
+          id="adsterra-invoke-2"
           strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                var atOptions = window.atOptions2;
+                var script = document.createElement('script');
+                script.src = 'https://molecularshindy.com/0386521f7ec0c67961bbfd814aa472cd/invoke.js';
+                document.body.appendChild(script);
+              })();
+            `,
+          }}
         />
 
         {/* Adsterra 第三个广告 */}
