@@ -62,7 +62,7 @@ export default async function RootLayout({
       <body
         className={`${inter.className} min-h-screen bg-white text-gray-900 dark:bg-black dark:text-gray-200`}
       >
-        
+
         {/* Adsterra 横幅广告配置 */}
         <Script
           id="adsterra-config"
@@ -83,6 +83,35 @@ export default async function RootLayout({
         {/* Adsterra 横幅广告加载 */}
         <Script
           src="https://www.highperformanceformat.com/332cf9d258e9f9b3875eba9a33f958d0/invoke.js"
+          strategy="afterInteractive"
+        />
+
+        {/* Adsterra 第二个广告配置 */}
+        <Script
+          id="adsterra-config-2"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              var atOptions = {
+                key: '0386521f7ec0c67961bbfd814aa472cd',
+                format: 'iframe',
+                height: 90,
+                width: 728,
+                params: {}
+              };
+            `,
+          }}
+        />
+
+        {/* Adsterra 第二个广告加载 */}
+        <Script
+          src="https://molecularshindy.com/0386521f7ec0c67961bbfd814aa472cd/invoke.js"
+          strategy="afterInteractive"
+        />
+
+        {/* Adsterra 第三个广告 */}
+        <Script
+          src="https://molecularshindy.com/e1/8c/c0/e18cc03b613cce6e0d0c08bb832488bc.js"
           strategy="afterInteractive"
         />
 
