@@ -9,6 +9,8 @@ import { getConfig } from '@/lib/config';
 
 import { SiteProvider } from '../components/SiteProvider';
 import { ThemeProvider } from '../components/ThemeProvider';
+import AdBanner1 from '../components/AdBanner1';
+import AdBanner2 from '../components/AdBanner2';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -62,87 +64,8 @@ export default async function RootLayout({
       <body
         className={`${inter.className} min-h-screen bg-white text-gray-900 dark:bg-black dark:text-gray-200`}
       >
-        {/* Adsterra 广告位1容器 */}
-        <div id="container-332cf9d258e9f9b3875eba9a33f958d0" className="w-full flex justify-center py-2"></div>
-
-        {/* Adsterra 广告位2容器 */}
-        <div id="container-0386521f7ec0c67961bbfd814aa472cd" className="w-full flex justify-center py-2"></div>
-
-        {/* Adsterra 横幅广告配置 */}
-        <Script
-          id="adsterra-config"
-          strategy="beforeInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function() {
-                var atOptions = {
-                  key: '332cf9d258e9f9b3875eba9a33f958d0',
-                  format: 'iframe',
-                  height: 60,
-                  width: 468,
-                  params: {
-                    container: 'container-332cf9d258e9f9b3875eba9a33f958d0'
-                  }
-                };
-                window.atOptions1 = atOptions;
-              })();
-            `,
-          }}
-        />
-
-        {/* Adsterra 横幅广告加载 */}
-        <Script
-          id="adsterra-invoke-1"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function() {
-                var atOptions = window.atOptions1;
-                var script = document.createElement('script');
-                script.src = 'https://www.highperformanceformat.com/332cf9d258e9f9b3875eba9a33f958d0/invoke.js';
-                document.body.appendChild(script);
-              })();
-            `,
-          }}
-        />
-
-        {/* Adsterra 第二个广告配置 */}
-        <Script
-          id="adsterra-config-2"
-          strategy="beforeInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function() {
-                var atOptions = {
-                  key: '0386521f7ec0c67961bbfd814aa472cd',
-                  format: 'iframe',
-                  height: 90,
-                  width: 728,
-                  params: {
-                    container: 'container-0386521f7ec0c67961bbfd814aa472cd'
-                  }
-                };
-                window.atOptions2 = atOptions;
-              })();
-            `,
-          }}
-        />
-
-        {/* Adsterra 第二个广告加载 */}
-        <Script
-          id="adsterra-invoke-2"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function() {
-                var atOptions = window.atOptions2;
-                var script = document.createElement('script');
-                script.src = 'https://molecularshindy.com/0386521f7ec0c67961bbfd814aa472cd/invoke.js';
-                document.body.appendChild(script);
-              })();
-            `,
-          }}
-        />
+        <AdBanner1 />
+        <AdBanner2 />
 
         {/* Adsterra 第三个广告 */}
         <Script
