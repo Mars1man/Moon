@@ -62,6 +62,11 @@ export default async function RootLayout({
       <body
         className={`${inter.className} min-h-screen bg-white text-gray-900 dark:bg-black dark:text-gray-200`}
       >
+        {/* Adsterra 广告位1容器 */}
+        <div id="container-332cf9d258e9f9b3875eba9a33f958d0" className="w-full flex justify-center py-2"></div>
+
+        {/* Adsterra 广告位2容器 */}
+        <div id="container-0386521f7ec0c67961bbfd814aa472cd" className="w-full flex justify-center py-2"></div>
 
         {/* Adsterra 横幅广告配置 */}
         <Script
