@@ -9,8 +9,8 @@ import { getConfig } from '@/lib/config';
 
 import { SiteProvider } from '../components/SiteProvider';
 import { ThemeProvider } from '../components/ThemeProvider';
-import AdBanner1 from '../components/AdBanner1';
-import AdBanner2 from '../components/AdBanner2';
+import AdBanner1 from '@/components/AdBanner1';
+import AdBanner2 from '@/components/AdBanner2';
 
 const inter = Inter({ subsets: ['latin'] });
 
